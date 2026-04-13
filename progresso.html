@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progresso - Baby Steps</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+
+        /* Estilização da trilha */
+        .battlepass-track {
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding: 60px 0;
+            overflow-x: auto; /* Mantém o scroll horizontal */
+            
+        /* Estilização da MINI BARRA*/
+            scrollbar-width: thin; 
+            scrollbar-color: #1e40af #e2e8f0;
+        }
+
+        /* Estilização da barra */
+        .battlepass-track::-webkit-scrollbar {
+            height: 8px; 
+        }
+        .battlepass-track::-webkit-scrollbar-track {
+            background: #e2e8f0;
+            border-radius: 10px;
+        }
+        .battlepass-track::-webkit-scrollbar-thumb {
+            background: #1e40af; 
+            border-radius: 10px;
+        }
+
+        /* A linha cinza que mostra o caminho total */
+        .battlepass-line {
+            position: absolute;
+            top: 50%;
+            left: 0;
+        /* Largura mínima para a linha acompanhar todos os itens no scroll */
+            min-width: 1300px; 
+            height: 6px;
+            background: #e2e8f0;
+            z-index: 1;
+            transform: translateY(-50%);
+        }
+
+        .battlepass-line-progress {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            height: 6px;
+            background: #1e40af;
+            z-index: 2;
+            transform: translateY(-50%);
+            transition: width 1s ease-in-out;
+        }
+
+        /* ícone e texto */
+        .tier-node {
+            position: relative;
+            z-index: 3;
+            flex: 0 0 220px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .folder-icon-box {
+            width: 70px;
+            height: 70px;
+            background: #cbc3e3; 
+            border: 3px solid #1e40af;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .folder-icon-box::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 0;
+            width: 30px;
+            height: 10px;
+            background: #1e40af;
+            border-radius: 5px 5px 0 0;
+        }
+
+        /* ESTADO NÍVEL COMPLETADO */
+        .tier-node.completed .folder-icon-box {
+            background: #1e40af;
+            color: white;
+        }
+        
+        .tier-node.completed .folder-icon-box::before {
+            background: #1e3a8a;
+        }
+
+        /* ESTADO NÍVEL ATUAL */
+        .tier-node.current .folder-icon-box {
+            background: #ffffff;
+            border-color: #1e40af;
+            box-shadow: 0 0 0 4px rgba(30, 64, 175, 0.2);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .header-icon:hover {
+            transform: scale(1.2) rotate(15deg);
+        }
+
+        /* ETIQUETA DE STATUS (Bloqueado, Disponível, etc) */
+        .status-badge {
+            font-size: 10px;
+            font-weight: bold;
+            padding: 2px 8px;
+            border-radius: 99px;
+            text-transform: uppercase;
+            margin-top: 8px;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <header class="bg-[#1e40af] text-white p-4 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-4">
+                <a href="#" class="bg-white p-2 rounded shadow-sm hover:scale-105 transition">
+                    <img src="./baby-steps-logo-quadrado.png" alt="logo" width="50" height="50" onerror="this.src='https://img.icons8.com/ios-filled/50/1e40af/walking.png'">
+                </a>
+                <div>
+                    <h1 class="font-bold text-lg leading-tight">LINHA DO TEMPO</h1>
+                    <p class="text-[10px] text-blue-200 uppercase tracking-widest">Pequenos passos rumo ao futuro</p>
+                </div>
+            </div>
+
+            <nav class="flex items-center space-x-6">
+                <a href="index.html" class="header-icon text-white" title="Voltar para Início">
+                    <i class="fas fa-home text-2xl"></i>
+                </a>
+                <a href="#settings" class="header-icon text-white" title="Configurações">
+                    <i class="fas fa-cog text-2xl"></i>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-12 flex-grow">
+        
+        <div class="mb-10 text-center">
+            <h2 class="text-3xl font-extrabold text-[#1e40af] uppercase italic tracking-tight">Meu Progresso de Carreira</h2>
+            <p class="text-gray-500 mt-2">Acompanhe a evolução da sua jornada profissional</p>
+        </div>
+
+        <!-- Frase da Trilha -->
+        <div class="bg-white p-8 rounded-3xl shadow-xl border border-gray-100 overflow-hidden">
+            
+            <div class="flex justify-between items-center mb-12 border-b border-gray-50 pb-6">
+                <div>
+                    <h3 class="text-xl font-bold text-[#1e40af]">Objetivos Alcançados</h3>
+                    <p class="text-sm text-gray-400">Total de 3 conquistas registradas</p>
+                </div>
+
+            <!-- Trilha de Progresso -->
+            <div class="battlepass-track">
+                <div class="battlepass-line"></div>
+                <div class="battlepass-line-progress" style="width: 780px;"></div>
+
+                <!-- Nível 1: Concluído -->
+                <div class="tier-node completed">
+                    <div class="folder-icon-box">
+                        <i class="fas fa-check text-xl"></i>
+                    </div>
+                    <span class="text-xs font-bold text-[#1e40af]">2024</span>
+                    <span class="text-sm font-semibold text-center px-2">Finalizar Curso de Inglês</span>
+                    <span class="status-badge bg-blue-100 text-blue-600">Concluído</span>
+                </div>
+
+                <!-- Nível 2: Concluído -->
+                <div class="tier-node completed">
+                    <div class="folder-icon-box">
+                        <i class="fas fa-briefcase text-xl"></i>
+                    </div>
+                    <span class="text-xs font-bold text-[#1e40af]">2025</span>
+                    <span class="text-sm font-semibold text-center px-2">Projeto da Empresa</span>
+                    <span class="status-badge bg-blue-100 text-blue-600">Concluído</span>
+                </div>
+
+                <!-- Nível 3: Concluído -->
+                <div class="tier-node completed">
+                    <div class="folder-icon-box">
+                        <i class="fas fa-users text-xl"></i>
+                    </div>
+                    <span class="text-xs font-bold text-[#1e40af]">2025</span>
+                    <span class="text-sm font-semibold text-center px-2">Conf. Internacional</span>
+                    <span class="status-badge bg-blue-100 text-blue-600">Concluído</span>
+                </div>
+
+                <!-- Nível 4: Atual (Em Processo) -->
+                <div class="tier-node current">
+                    <div class="folder-icon-box">
+                        <i class="fas fa-laptop-code text-[#1e40af] text-xl"></i>
+                    </div>
+                    <span class="text-xs font-bold text-[#1e40af]">2026</span>
+                    <span class="text-sm font-semibold text-center px-2 text-[#1e40af]">Aprender HTML</span>
+                    <span class="status-badge bg-yellow-100 text-yellow-600">Em Foco</span>
+                </div>
+
+                <!-- Nível 5: Próximo -->
+                <div class="tier-node">
+                    <div class="folder-icon-box">
+                        <i class="fas fa-globe text-[#1e40af] text-xl opacity-30"></i>
+                    </div>
+                    <span class="text-xs font-bold text-gray-400">2026</span>
+                    <span class="text-sm font-semibold text-center px-2 text-gray-400">Site Pessoal</span>
+                    <span class="status-badge bg-gray-100 text-gray-400">Pendente</span>
+                </div>
+
+                <!-- Nível 6: Futuro -->
+                <div class="tier-node">
+                    <div class="folder-icon-box">
+                        <i class="fas fa-plane-departure text-[#1e40af] text-xl opacity-30"></i>
+                    </div>
+                    <span class="text-xs font-bold text-gray-400">2026</span>
+                    <span class="text-sm font-semibold text-center px-2 text-gray-400">Viagem Exterior</span>
+                    <span class="status-badge bg-gray-100 text-gray-400">Bloqueado</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <footer class="bg-[#1e40af] text-white p-6 text-center">
+        <p class="text-xs uppercase tracking-widest font-bold">Baby Steps &copy; 2026 // Pequenos Passos Rumo ao Futuro.</p>
+    </footer>
+
+</body>
+</html>

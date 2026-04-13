@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checklist - Baby Steps</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+
+        /* Estilo personalizado para as caixas de checklist */
+        .custom-checkbox {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            accent-color: #1e40af;
+        }
+
+        /* Efeito de riscar o texto quando marcado */
+        .check-item input:checked + label {
+            text-decoration: line-through;
+            color: #94a3b8;
+            opacity: 0.7;
+        }
+
+        .check-item {
+            transition: all 0.2s ease;
+            border-left: 4px solid transparent;
+        }
+
+        .check-item:hover {
+            border-left: 4px solid #1e40af;
+            background-color: #f8fafc;
+        }
+
+        /* Animação dos ícones do cabeçalho */
+        .header-icon {
+            transition: transform 0.3s ease, opacity 0.2s;
+        }
+        .header-icon:hover {
+            transform: scale(1.2) rotate(15deg);
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 flex flex-col min-h-screen">
+
+    <!-- Cabeçalho -->
+    <header class="bg-[#1e40af] text-white p-4 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-4">
+                <a href="#" class="bg-white p-2 rounded shadow-sm hover:scale-105 transition">
+                    <img src="./baby-steps-logo-quadrado.png" alt="logo" width="50" height="50">
+                </a>
+                <div>
+                    <h1 class="font-bold text-lg leading-tight">LISTA DE OBJETIVOS</h1>
+                    <p class="text-[10px] text-blue-200 uppercase tracking-widest">Pequenos passos rumo ao futuro</p>
+                </div>
+            </div>
+            
+            <h1 class="text-lg font-bold uppercase tracking-widest text-center flex-grow px-4">Minhas Metas</h1>
+
+             <!-- icones do cabeçalho -->
+            <nav class="flex items-center space-x-5">
+                <a href="index.html" class="header-icon text-white" title="Voltar para Início">
+                    <i class="fas fa-home text-3xl"></i>
+                </a>
+                <a href="#configuracoes" class="header-icon text-white" title="Configurações">
+                    <i class="fas fa-cog text-3xl"></i>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main class="container mx-auto px-4 py-12 flex-grow">
+        
+        <div class="max-w-2xl mx-auto">
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
+                <!-- Topo do Card -->
+                <div class="bg-[#1e40af] p-6 text-white">
+                    <h2 class="text-xl font-bold flex items-center">
+                        <i class="fas fa-tasks mr-3"></i> Minha Lista de Metas
+                    </h2>
+                    <p class="text-blue-100 text-sm mt-1">Marque os itens conforme for concluindo:</p>
+                </div>
+
+                <!-- Lista -->
+                <div class="p-4 md:p-8">
+                    <form class="space-y-4">
+                        
+                        <div class="check-item flex items-center p-4 rounded-xl bg-gray-50 border border-gray-100">
+                            <input type="checkbox" id="meta1" class="custom-checkbox mr-4">
+                            <label for="meta1" class="text-lg font-semibold text-gray-700 cursor-pointer select-none w-full">
+                                Enviar currículo
+                            </label>
+                        </div>
+
+                        <div class="check-item flex items-center p-4 rounded-xl bg-gray-50 border border-gray-100">
+                            <input type="checkbox" id="meta2" class="custom-checkbox mr-4">
+                            <label for="meta2" class="text-lg font-semibold text-gray-700 cursor-pointer select-none w-full">
+                                Estudar 1h por dia
+                            </label>
+                        </div>
+
+                        <div class="check-item flex items-center p-4 rounded-xl bg-gray-50 border border-gray-100">
+                            <input type="checkbox" id="meta3" class="custom-checkbox mr-4">
+                            <label for="meta3" class="text-lg font-semibold text-gray-700 cursor-pointer select-none w-full">
+                                Guardar R$50 esta semana
+                            </label>
+                        </div>
+
+                        <div class="check-item flex items-center p-4 rounded-xl bg-gray-50 border border-gray-100">
+                            <input type="checkbox" id="meta4" class="custom-checkbox mr-4">
+                            <label for="meta4" class="text-lg font-semibold text-gray-700 cursor-pointer select-none w-full">
+                                Fazer atividade física
+                            </label>
+                        </div>
+
+                    </form>
+
+                    <!-- Botão de Adição -->
+                    <div class="mt-8 pt-6 border-t border-gray-100">
+                        <button class="w-full py-3 border-2 border-dashed border-blue-200 rounded-xl text-blue-400 hover:text-blue-600 hover:border-blue-400 hover:bg-blue-50 transition-all font-medium flex items-center justify-center">
+                            <i class="fas fa-plus-circle mr-2"></i> Adicionar nova meta
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <p class="text-center mt-6 text-gray-400 text-sm italic">
+                “Foco, Força e Fé”
+            </p>
+        </div>
+
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="bg-[#1e40af] text-white p-4 text-center mt-auto">
+        <p>Baby Steps &copy; 2026 - Pequenos passos rumo ao futuro</p>
+    </footer>
+
+</body>
+</html>

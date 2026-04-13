@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baby Steps</title>
+    <!-- Adicionei o Tailwind para que suas classes de cores funcionem -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    
+    <style>
+        .status-pill {
+            background-color: #dbeafe;
+            border: 1px solid #bfdbfe;
+        }
+         /* estiliza os ícones de navegação */
+        nav ul {
+        display: flex;          /* Junta os ícones um ao lado do outro */
+        gap: 20px;             /* Cria um espaço de 20px entre eles */
+        justify-content: center; /* Centraliza */
+        list-style: none;      /* Remove aquelas "bolinhas" do html comum */
+        }
+        nav img {
+            transition: transform 0.2s;
+        }
+        nav img:hover {
+            transform: scale(1.1); /* Aumenta o ícone em 10% quando passa o mouse */
+        }
+        
+        .header-icon {
+            transition: transform 0.3s ease, opacity 0.2s;
+        }
+        .header-icon:hover {
+            transform: scale(1.2) rotate(15deg); /* dá um efeito legal no icone quando passa o mouse */
+            opacity: 0.9;
+        }
+
+        /* área de digitação */
+        .resume-input:focus {
+            outline: none;
+            background-color: #eff6ff;
+            border-color: #3b82f6;
+        }
+    </style>
+
+</head>
+<body class="bg-gray-50 flex flex-col min-h-screen">    
+
+    <!-- Cabeçalho -->
+    <header class="bg-[#1e40af] text-white p-4 flex items-center justify-between shadow-md">
+        <div class="flex items-center w-1/4">
+            <a href="#" class="logo bg-white p-1 rounded">
+                <img src="./baby-steps-logo-quadrado.png" alt="logo" width="80" height="80">
+            </a>
+        </div>
+
+        <!-- Centro: Título -->
+                <div>
+                   <div>
+                    <h1 class="font-bold text-lg leading-tight">Pequenos Passos Rumo ao Futuro</h1>
+            </div>
+                </div>
+            </div>
+
+        <!-- Ícones de Perfil e Configurações -->
+        <div class="flex items-center justify-end space-x-6 w-1/4">
+            <a href="login.html" class="header-icon" title="Perfil / Login">
+                <img src="https://img.icons8.com/ios-filled/40/ffffff/user-male-circle.png" alt="Perfil" width="40" height="40">
+            </a>
+            <a href="#configuracoes" class="header-icon" title="Configurações">
+                <img src="https://img.icons8.com/ios-filled/40/ffffff/settings.png" alt="Configurações" width="40" height="40">
+            </a>
+        </div>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main class="container mx-auto px-4 flex-grow">
+        
+        <!-- Navegação de Ícones do centro -->
+        <nav>
+            <ul>
+                <li>
+                    <a href="calendario.html" title="Calendário">
+                        <img src="https://img.icons8.com/ios-filled/50/235FB9/calendar-1.png" alt="Calendário">
+                    </a>
+                </li>
+                <li>
+                    <a href="checklist.html" title="Lista">
+                        <img src="https://img.icons8.com/ios-filled/50/235FB9/list.png" alt="Lista">
+                    </a>
+                </li>
+                <li>
+                    <a href="progresso.html" title="Formação">
+                        <img src="https://img.icons8.com/ios-filled/50/235FB9/graduation-cap--v1.png" alt="Graduação">
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Frase do Dia -->
+        <section class="mb-8 max-w-4xl mx-auto">
+            <div class="status-pill rounded-t-lg px-4 py-2 font-bold text-[#1e40af] uppercase text-sm">
+                UMA FRASE PARA VOCÊ
+            </div>
+            <div class="bg-white p-6 md:p-10 rounded-b-lg shadow-sm border-x border-b border-blue-100 flex justify-center items-center">
+                <div class="bg-[#dbeafe] p-6 rounded-xl shadow-inner text-center w-full border border-blue-200">
+                    <p class="text-[#1e40af] text-lg font-medium italic">
+                        🌟 “Se você olhar para o que tem na vida, você sempre terá mais. Se você olhar para o que não tem na vida, você nunca terá o suficiente.” – Oprah Winfrey!
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Secção: Currículo -->
+        <section class="mb-12 max-w-4xl mx-auto">
+            <div class="status-pill rounded-t-lg px-4 py-2 font-bold text-[#1e40af] uppercase text-sm">
+                COMECE A CRIAR SEU CURRÍCULO AQUI
+            </div>
+            <div class="bg-white p-8 rounded-b-lg shadow-sm border-x border-b border-blue-100">
+                <!-- uma div para digitação -->
+                <textarea 
+                    class="resume-input w-full bg-[#dbeafe] p-4 rounded-lg border border-blue-100 min-h-[150px] transition resize-y text-gray-700 placeholder-gray-500"
+                    placeholder="Comece a digitar seu currículo aqui (nome, experiências, habilidades...)"
+                ></textarea>
+            </div>
+        </section>
+        
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="bg-[#1e40af] text-white p-4 text-center mt-auto">
+        <p>Baby Steps &copy; 2026 - Pequenos passos rumo ao futuro</p>
+    </footer>
+
+</body>
+</html>

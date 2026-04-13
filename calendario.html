@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendário - Baby Steps</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        
+        /* Estilo da grade do calendário */
+        .calendar-table {
+            border-collapse: separate; /* Arredonda as bordas */
+            border-spacing: 0;
+            width: 100%;
+            border: 2px solid #1e40af;
+            border-radius: 12px;
+            overflow: hidden; /* delimita o conteúdo */
+        }
+        
+        /* Estilo do Cabeçalho(Dias da semana: Seg, Ter, Quarta...) */
+        .calendar-table th {
+            background-color: #1e40af;
+            color: white;
+            padding: 12px;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+        }
+        
+        /* Estilo do quadradinho do dia */
+        .calendar-table td {
+            border: 1px solid #e2e8f0;
+            height: 100px;
+            vertical-align: top;
+            padding: 8px;
+            background-color: white;
+            transition: background-color 0.2s;
+        }
+
+        /* Muda a cor do quadrado quando o mouse passa por cima */
+        .calendar-table td:hover {
+            background-color: #f0f7ff;
+        }
+
+        .day-number {
+            font-weight: bold;
+            color: #1e40af;
+            margin-bottom: 4px;
+            display: block;
+        }
+
+        /* Estilo da caixinha de texto dentro do dia */
+        .goal-input {
+            width: 100%;
+            border: none;
+            background: #eff6ff;
+            border-radius: 4px;
+            padding: 4px;
+            font-size: 0.7rem;
+            color: #1e40af;
+            outline: none;
+            border-bottom: 2px solid transparent;
+        }
+
+        /* linhazinha embaixo da digitação*/
+        .goal-input:focus {
+            border-bottom: 2px solid #1e40af;
+        }
+    </style>
+        
+    <!-- Cabeçalho -->
+    <header class="bg-[#1e40af] text-white p-4 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-4">
+              <a href="#"></a>
+                    <img src="./baby-steps-logo-quadrado.png" alt="logo" width="60" height="60">
+                </a>
+                <div>
+                    <h1 class="font-bold text-lg leading-tight">Calendário</h1>
+                    <p class="text-[10px] text-blue-200 uppercase tracking-widest">Pequenos passos rumo ao futuro</p>
+                </div>
+            </div>
+
+          <!-- Navegação -->
+        <nav class="flex items-center space-x-4">
+            <a href="index.html" class="text-white hover:text-blue-200 transition-colors" title="Voltar para Início">
+                <i class="fas fa-home text-3xl"></i>
+            </a>
+            <a href="#configuracoes" class="header-icon" title="Configurações">
+                <img src="https://img.icons8.com/ios-filled/40/ffffff/settings.png" alt="Configurações" width="40" height="40">
+            </a>
+          </nav>
+    </div>
+</header>
+
+    <!-- Conteúdo Principal -->
+    <main class="container mx-auto px-4 py-8 flex-grow">
+        
+        <div class="max-w-5xl mx-auto">
+            <!-- Título da Seção -->
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="text-2xl font-bold text-[#1e40af] flex items-center">
+                    <i class="fas fa-calendar-alt mr-3"></i> Abril 2026
+                </h2>
+            </div>
+
+            <!-- Calendário -->
+            <div class="bg-white rounded-xl shadow-lg p-2 md:p-4">
+                <table class="calendar-table">
+                    <thead>
+                        <tr>
+                            <th>Dom</th><th>Seg</th><th>Ter</th><th>Qua</th><th>Qui</th><th>Sex</th><th>Sáb</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Linha 1 -->
+                        <tr>
+                            <td class="bg-gray-100"></td><td class="bg-gray-100"></td><td class="bg-gray-100"></td>
+                            <td><span class="day-number">1</span><input type="text" class="goal-input" placeholder="Objetivo..."></td>
+                            <td><span class="day-number">2</span><input type="text" class="goal-input" placeholder="Objetivo..."></td>
+                            <td><span class="day-number">3</span><input type="text" class="goal-input" placeholder="Objetivo..."></td>
+                            <td><span class="day-number">4</span><input type="text" class="goal-input" placeholder="Objetivo..."></td>
+                        </tr>
+                        <!-- Linha 2 -->
+                        <tr>
+                            <td><span class="day-number">5</span><input type="text" class="goal-input" placeholder="Objetivo..."></td>
+                            <td><span class="day-number">6</span><input type="text" class="goal-input" placeholder="Objetivo..."></td>
+                            <td><span class="day-number">7</span><input type="text" class="goal-input" placeholder="Objetivo..."></td>
+                            <td><span class="day-number">8</span><input type="text" class="goal-input" placeholder="Objetivo..."></td>
+                            <td><span class="day-number">9</span><input type="text" class="goal-input" placeholder="Objetivo..."></td>
+                            <td><span class="day-number">10</span><input type="text" class="goal-input" placeholder="Objetivo..."></td>
+                            <td><span class="day-number">11</span><input type="text" class="goal-input" placeholder="Objetivo..."></td>
+                        </tr>
+                        <!-- Linha 3 -->
+                        <tr>
+                            <td><span class="day-number">12</span><input type="text" class="goal-input" placeholder="Objetivo..."></td>
+                            <td><span class="day-number">13</span><input type="text" class="goal-input" placeholder="Objetivo..."></td>
+                            <td><span class="day-number">14</span><input type="text" class="goal-input" placeholder="Objetivo..."></td>
+                            <td><span class="day-number">15</span><input type="text" class="goal-input" placeholder="Objetivo..."></td>
+                            <td><span class="day-number">16</span><input type="text" class="goal-input" placeholder="Objetivo..."></td>
+                            <td><span class="day-number">17</span><input type="text" class="goal-input" placeholder="Objetivo..."></td>
+                            <td><span class="day-number">18</span><input type="text" class="goal-input" placeholder="Objetivo..."></td>
+                        </tr>
+                        <!-- Linha 4 -->
+                        <tr>
+                            <td><span class="day-number">19</span><input type="text" class="goal-input" placeholder="Objetivo..."></td>
+                            <td><span class="day-number">20</span><input type="text" class="goal-input" placeholder="Objetivo..."></td>
+                            <td><span class="day-number">21</span><input type="text" class="goal-input" placeholder="Objetivo..."></td>
+                            <td><span class="day-number">22</span><input type="text" class="goal-input" placeholder="Objetivo..."></td>
+                            <td><span class="day-number">23</span><input type="text" class="goal-input" placeholder="Objetivo..."></td>
+                            <td><span class="day-number">24</span><input type="text" class="goal-input" placeholder="Objetivo..."></td>
+                            <td><span class="day-number">25</span><input type="text" class="goal-input" placeholder="Objetivo..."></td>
+                        </tr>
+                        <!-- Linha 5 -->
+                        <tr>
+                            <td><span class="day-number">26</span><input type="text" class="goal-input" placeholder="Objetivo..."></td>
+                            <td><span class="day-number">27</span><input type="text" class="goal-input" placeholder="Objetivo..."></td>
+                            <td><span class="day-number">28</span><input type="text" class="goal-input" placeholder="Objetivo..."></td>
+                            <td><span class="day-number">29</span><input type="text" class="goal-input" placeholder="Objetivo..."></td>
+                            <td><span class="day-number">30</span><input type="text" class="goal-input" placeholder="Objetivo..."></td>
+                            <td class="bg-gray-100"></td><td class="bg-gray-100"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <p class="mt-4 text-gray-500 text-sm italic text-center">
+                * Os campos de "Objetivo" permitem que você planeje suas tarefas diárias.
+            </p>
+        </div>
+
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="bg-[#1e40af] text-white p-4 text-center mt-auto">
+        <p>Baby Steps &copy; 2026 - Pequenos passos rumo ao futuro</p>
+    </footer>
+
+</body>
+</html>
